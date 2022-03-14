@@ -1,15 +1,20 @@
 export const library = [
+  {
+    title: "Non Fungi Music",
+    image: "https://ipfs.moralis.io:2053/ipfs/QmNsnqDMmRMKgWm2dQrZ4uFGQNUiZ7vmbfgptYyAgfKNVx/media/2",
+    contract: "0xafB8FFa69A4C4235b4cC64D2ae026f26D38de2F0"
+  },
     {
       title: "Hyperspace",
       image:
         "https://www.digitalartsonline.co.uk/cmsdata/slideshow/3776245/beck_-_hyperspace.jpg"
     },
-    {
-      title: "Non Fungible",
-      image:
-        "https://ipfs.moralis.io:2053/ipfs/QmTbF7gLPmtrZuNr7kZJ8iufxBVEPqrAdJsxujSmu9qbuh/art/NonFungible.png",
-      contract: "0x1C45d483515A92fCDD0aa5eaF03dbdf1B7d6898a",
-    },
+    // {
+    //   title: "Non Fungible",
+    //   image:
+    //     "https://ipfs.moralis.io:2053/ipfs/QmTbF7gLPmtrZuNr7kZJ8iufxBVEPqrAdJsxujSmu9qbuh/art/NonFungible.png",
+    //   contract: "0x1C45d483515A92fCDD0aa5eaF03dbdf1B7d6898a",
+    // },
     {
       title: "The Unknown",
       image:

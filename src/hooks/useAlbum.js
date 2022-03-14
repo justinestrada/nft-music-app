@@ -11,7 +11,7 @@ export const useAlbum = (contract) => {
     if (isInitialized) {
       fetchAlbum().then((songs) => {
         setAlbum(songs.result)
-        });
+      });
     }
   }, [isInitialized, contract]);
 

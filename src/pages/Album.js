@@ -2,25 +2,14 @@ import React from 'react';
 import { useAlbum } from '../hooks/useAlbum';
 import "./Album.css";
 import { useLocation } from 'react-router-dom';
-import OpenSea from '../images/opensea.png';
+import opensea from '../images/opensea.png';
 import { ClockCircleOutlined } from '@ant-design/icons';
 
-const Album = ({setNftAlbum}) => {
-  // const { state: albumDetails } = useLocation();
+const Album = ({ setNftAlbum }) => {
+  const { state: albumDetails } = useLocation();
+  console.log(albumDetails.contract)
   const { album } = useAlbum(albumDetails.contract);
-  const albumDetails = [
-    {
-      "token_address": "",
-      "token_id": "",
-      "amount": "1",
-      "contract_type": "ERC1155",
-      "name": "Shaadow",
-      "symbol": "shad",
-      "token_uri": "",
-      "metadata": "{\"image\":\"\",\"name\":\"Head Shoulder\",\"animation_url\":\"\"}",
-      "synced_at": ""
-    }
-  ]
+
   return (
     <>
       <div className="albumContent">
@@ -28,33 +17,38 @@ const Album = ({setNftAlbum}) => {
           <img
             src={albumDetails.image}
             alt="albumcover"
-            className="albumCover"/>
+            className="albumCover"
+          ></img>
           <div className="albumDeets">
             <div>ALBUM</div>
             <div className="title">{albumDetails.title}</div>
             <div className="artist">
               {album && JSON.parse(album[0].metadata).artist}
             </div>
-            <div className="artist">
-              {album && JSON.parse(album[0].metadata).year}
+            <div>
+              {album && JSON.parse(album[0].metadata).year} •{" "}
               {album && album.length} Songs
             </div>
           </div>
         </div>
         <div className="topBan">
-          <div className="playButton" onClick={(() => setNftAlbum(album))}>
-            Play
-          </div>
+            {album &&
+              <div className="playButton" onClick={() => {
+                console.log('play')
+                setNftAlbum(album)}
+              }>
+                PLAY
+              </div>
+            }
           <div
-           className="openButton"
-           onClick={() => {
-             window.open(
-               `https://testnets.opensea.io/assets/mumbai/${albumDetails.contract}/1`
-             )
-           }}
+            className="openButton"
+            onClick={() =>
+              window.open(
+                `https://testnets.opensea.io/assets/mumbai/${albumDetails.contract}/1`
+              )
+            }
           >
-            OpenSea
-            <img src={OpenSea} className="openLogo" />
+            <img src={opensea} className="openLogo" />
           </div>
         </div>
         <div className="tableHeader">
@@ -63,28 +57,26 @@ const Album = ({setNftAlbum}) => {
           <div className="numberHeader">
             <ClockCircleOutlined />
           </div>
-          {albumDetails &&
-            albumDetails.map((nft, i) => {
-              nft = JSON.parse(nft.metadata)
-              return (
-                <>
-                  <div className="tableContent">
-                    <div className="numberHeader">{i + 1}</div>
-                    <div className="titleHeader"
-                      style={{ color: "rgb(205, 203, 203)" }}
-                    >
-                      {nft.name}
-                    </div>
-                  </div>
-                </>
-              )
-            })
-          }
         </div>
+        {album &&
+          album.map((nft, i) => {
+            nft = JSON.parse(nft.metadata);
+            return (
+              <div className="tableContent" key={i}>
+                <div className="numberHeader">{i + 1}</div>
+                <div
+                  className="titleHeader"
+                  style={{ color: "rgb(205, 203, 203)" }}
+                >
+                  {nft.name}
+                </div>
+                <div className="numberHeader">{nft.duration}</div>
+              </div>
+            );
+          })}
       </div>
-      {/* <button onClick={() => { console.log(album) }}>Hello</button> */}
     </>
-  )
-}
+  );
+};
 
 export default Album;

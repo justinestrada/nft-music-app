@@ -4,6 +4,7 @@ import "./Home.css";
 import { Tabs } from "antd";
 import { library } from '../helpers/albumList';
 
+let thiskey = 0;
 const { TabPane } = Tabs;
 
 const Home = () => {
@@ -15,8 +16,9 @@ return(
         <h1 className="featuredTitle">Today is the Day</h1>
         <div className="albums">
           {library && library.map((e) => {
+            thiskey++
             return (
-              <Link to="/album" state={e} className="albumSelection">
+              <Link to="/album" state={e} className="albumSelection" key={thiskey}>
                 <img
                   src={e.image}
                   alt="bull"
@@ -31,8 +33,9 @@ return(
         <h1 className="featuredTitle">Pop Hits</h1>
         <div className="albums">
           {library && library.slice(7, 13).map((e) => {
+            thiskey++
             return (
-              <Link to="/album" state={e} className="albumSelection">
+              <Link to="/album" state={e} className="albumSelection" key={thiskey}>
                 <img
                   src={e.image}
                   alt="bull"
@@ -45,8 +48,9 @@ return(
         <h1 className="featuredTitle">Country</h1>
         <div className="albums">
           {library && library.slice(5, 11).map((e) => {
+            thiskey++
             return (
-              <Link to="/album" state={e} className="albumSelection">
+              <Link to="/album" state={e} className="albumSelection" key={thiskey}>
                 <img
                   src={e.image}
                   alt="bull"
@@ -61,8 +65,9 @@ return(
         <h1 className="featuredTitle">Newest Releases</h1>
         <div className="albums">
           {library && library.map((e) => {
+            thiskey++
             return (
-              <Link to="/album" state={e} className="albumSelection">
+              <Link to="/album" state={e} className="albumSelection" key={thiskey}>
                 <img
                   src={e.image}
                   alt="bull"

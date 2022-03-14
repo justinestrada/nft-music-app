@@ -6,9 +6,9 @@ import './App.css';
 import { Layout } from 'antd';
 import Spotify from './images/Spotify.png'
 import { SearchOutlined, DownCircleOutlined } from "@ant-design/icons";
-import AudioPlayer from './components/AudioPlayer';
+import Player from './components/AudioPlayer';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Sider, Content, Footer } = Layout;
 
 const App = () => {
   const [nftAlbum, setNftAlbum] = useState();
@@ -41,8 +41,10 @@ const App = () => {
         </Content>
       </Layout>
       <Footer className="footer">
-        {nftAlbum && 
-          <AudioPlayer nftAlbum/>
+        {nftAlbum &&
+          <Player
+            url={nftAlbum}
+          />
         }
       </Footer>
     </Layout>
